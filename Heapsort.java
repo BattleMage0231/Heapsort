@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Heapsort {
+public class Heapsort<E extends Comparable<E>> {
 
    private int left(int i) {
    
@@ -14,28 +14,28 @@ public class Heapsort {
    
    }
 
-   private void swap(int[] arr, int i, int j) {
+   private void swap(E[] arr, int i, int j) {
    
-      int tmp = arr[i];
+      E tmp = arr[i];
       arr[i] = arr[j];
       arr[j] = tmp;
    
    }
 
-   private void heapify(int[] heap, int i, int len) {
+   private void heapify(E[] heap, int i, int len) {
    
       int left = left(i);
       int right = right(i);
       
       int maxIndex = i;
       
-      if(left < len && heap[left] > heap[maxIndex]) {
+      if(left < len && heap[left].compareTo(heap[maxIndex]) > 0) {
       
          maxIndex = left;
       
       }
       
-      if(right < len && heap[right] > heap[maxIndex]) {
+      if(right < len && heap[right].compareTo(heap[maxIndex]) > 0) {
       
          maxIndex = right;
       
@@ -50,7 +50,7 @@ public class Heapsort {
       
    }
 
-   public void sort(int[] arr) {
+   public void sort(E[] arr) {
    
       for(int i = arr.length - 1; i >= 0; i--) {
       
@@ -69,13 +69,13 @@ public class Heapsort {
    
    public static void main(String[] args) {
    
-      Heapsort h = new Heapsort();
+      Heapsort<Integer> h = new Heapsort<Integer>();
       
       Scanner s = new Scanner(System.in);
       
       int n = s.nextInt();
       
-      int[] arr = new int[n];
+      Integer[] arr = new Integer[n];
       
       for(int i = 0; i < n; ++i) {
       
