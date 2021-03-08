@@ -2,18 +2,6 @@ import java.util.*;
 
 public class Heapsort<E extends Comparable<E>> {
 
-   private int left(int i) {
-   
-      return 2 * i + 1;
-   
-   }
-   
-   private int right(int i) {
-   
-      return 2 * i + 2;
-   
-   }
-
    private void swap(E[] arr, int i, int j) {
    
       E tmp = arr[i];
@@ -24,8 +12,8 @@ public class Heapsort<E extends Comparable<E>> {
 
    private void heapify(E[] heap, int i, int len) {
    
-      int left = left(i);
-      int right = right(i);
+      int left = 2 * i + 1;
+      int right = 2 * i + 2;
       
       int maxIndex = i;
       
