@@ -26,31 +26,25 @@ public class Heapsort {
    
       int left = left(i);
       int right = right(i);
-   
-      if(left < len && right < len) {
       
-         int max = Math.max(heap[i], Math.max(heap[left], heap[right]));
-         
-         if(max != heap[i]) {
-         
-            if(max == heap[left]) {
-            
-               swap(heap, i, left);
-               heapify(heap, left, len);
-            
-            } else {
-            
-               swap(heap, i, right);
-               heapify(heap, right, len);
-            
-            }
-         
-         }
+      int maxIndex = i;
       
-      } else if(left < len && heap[left] > heap[i]) {
+      if(left < len && heap[left] > heap[maxIndex]) {
       
-         swap(heap, i, left);
-         heapify(heap, left, len);
+         maxIndex = left;
+      
+      }
+      
+      if(right < len && heap[right] > heap[maxIndex]) {
+      
+         maxIndex = right;
+      
+      }
+      
+      if(maxIndex != i) {
+      
+         swap(heap, i, maxIndex);
+         heapify(heap, maxIndex, len);
       
       }
       
